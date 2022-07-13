@@ -14,8 +14,8 @@ class Forms1 extends React.Component {
         //we want the firstName state to change to the current value of the input box.
         /* when an event fires (e.g: the letters passing into the input area), 
             we pass the predetermined event parameter into the method */
-        this.setState({firstName: event.target.value}) //the target is the input area
-
+        this.setState({[event.target.name]: event.target.value}) //the target is the input area
+        //this works because the target name, aka the name of the input below is the same as the states above
     }
   render() {
     return (
@@ -23,7 +23,7 @@ class Forms1 extends React.Component {
         <input type="text" name="firstName" placeholder="First Name" onChange={this.handleChange}/>
         <br />
         <input type="text" name="lastName" placeholder="Last Name" onChange={this.handleChange}/>
-        <h1>{this.state.firstName} {this.state.lastName}</h1>
+        <h1>{this.state.firstName} <br />{this.state.lastName}</h1>
       </form>
     );
   }
