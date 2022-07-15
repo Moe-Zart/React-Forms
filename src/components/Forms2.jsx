@@ -6,39 +6,106 @@ class Forms2 extends React.Component {
     this.state = {
       firstName: "",
       lastName: "",
-      age: [],
-    };
+      age: "",
+      gender: "",
+      travelDestinations: "",
+          halal:true,
+          vegan:false,
+          lactoseFree:false,
+          glutenFree:false,
+    }
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
     });
+    console.log(event.target.value);
   }
   render() {
     return (
-      <main>
+        <main>
         <form>
           <input
             type="text"
             placeholder="First Name"
             name="firstName"
             onChange={this.handleChange}
-          />
+            />
           <br />
           <input
             type="text"
             placeholder="Last Name"
             name="lastName"
             onChange={this.handleChange}
-          />
+            />
           <br />
           <input
             type="number"
             placeholder="Age"
             name="age"
             onChange={this.handleChange}
-          />
+            />
+          <br />
+          {/* For the gender below, you need to specify the value so that the name equals to the value you set
+          , which will be male and female */}
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="male"
+              onChange={this.handleChange}
+              />
+            Male
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="female"
+              onChange={this.handleChange}
+              />{" "}
+            Female
+          </label>
+          <br />
+          <select name="travelDestinations" onChange={this.handleChange}>
+            <option>--Please Choose Your Destination:--</option>
+            <option value="switzerland">Switzerland</option>
+            <option value="dubai">Dubai</option>
+            <option value="italy">Italy</option>
+          </select>
+          <br />
+          <label>
+          <input
+            type="checkbox"
+            name="halal"
+            onChange={this.handleChange} checked={this.state.dietaryRestricitons.halal}
+            />Halal
+            </label>
+          <br />
+          <label>
+          <input
+            type="checkbox"
+            name="vegan"
+            onChange={this.handleChange} checked={this.state.dietaryRestricitons.vegan}
+            />Vegan
+            </label>
+          <br />
+          <label>
+          <input
+            type="checkbox"
+            name="lactoseFree"
+            onChange={this.handleChange} checked={this.state.dietaryRestricitons.lactoseFree}
+            />Lactose Free
+            </label>
+          <br />
+          <label>
+          <input
+            type="checkbox"
+            name="glutenFree"
+            onChange={this.handleChange} checked={this.state.dietaryRestricitons.glutenFree}
+            />Gluten Free
+            </label>
           <br />
           <button type="submit">Submit</button>
         </form>
@@ -47,10 +114,14 @@ class Forms2 extends React.Component {
           <h1>Entered Information:</h1>
           <h3>Your Name: {this.state.firstName + " " + this.state.lastName}</h3>
           <h3>Your Age: {this.state.age}</h3>
+          <h3>Your Gender: {this.state.gender}</h3>
+          <h3>Your Travel Destination: {this.state.travelDestinations}</h3>
+          <h3>Your Dietary Restrictions: {}</h3>
         </div>
       </main>
-    );
-  }
+    
+    )
+}
 }
 
 export default Forms2;
